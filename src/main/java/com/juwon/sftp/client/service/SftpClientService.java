@@ -1,4 +1,4 @@
-package com.juwon.sftp.client;
+package com.juwon.sftp.client.service;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
