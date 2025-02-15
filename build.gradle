@@ -24,29 +24,29 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-batch'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-integration'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-batch'
+	//implementation 'org.springframework.boot:spring-boot-starter-data-jdbc' // 주석 처리
+	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // 주석 처리
+	//implementation 'org.springframework.boot:spring-boot-starter-integration'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.apache.kafka:kafka-streams'
-	implementation 'org.springframework.integration:spring-integration-http'
-	implementation 'org.springframework.integration:spring-integration-jdbc'
-	implementation 'org.springframework.integration:spring-integration-jpa'
-	implementation 'org.springframework.integration:spring-integration-kafka'
-	implementation 'org.springframework.security:spring-security-messaging'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	//implementation 'org.springframework.integration:spring-integration-http'
+	//implementation 'org.springframework.integration:spring-integration-jdbc' 리
+	//implementation 'org.springframework.integration:spring-integration-jpa' // 주석 처리
+	//implementation 'org.springframework.integration:spring-integration-kafka'
+	//implementation 'org.springframework.security:spring-security-messaging'
+	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation 'com.jcraft:jsch:0.1.55'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.batch:spring-batch-test'
-	testImplementation 'org.springframework.integration:spring-integration-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	//testImplementation 'org.springframework.batch:spring-batch-test'
+	//testImplementation 'org.springframework.integration:spring-integration-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
