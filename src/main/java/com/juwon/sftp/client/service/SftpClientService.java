@@ -1,10 +1,10 @@
 package com.juwon.sftp.client.service;
 
-import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.Session;
+import com.jcraft.jsch.*;
 import org.springframework.stereotype.Service;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 @Service
 public class SftpClientService {
@@ -24,7 +24,34 @@ public class SftpClientService {
             channel.connect();
             channelSftp = (ChannelSftp) channel;
 
-            channelSftp.put(localFilePath, remoteFilePath);
+            // stream으로 읽어서 업로드합니다.
+            InputStream ins = new FileInputStream(remoteFilePath);
+            channelSftp.put(ins, localFilePath, new SftpProgressMonitor() {
+                private long max = 0;  //최대
+                private long count = 0;  //계산을 위해 담아두는 변수
+                private long percent = 0;  //퍼센트
+
+                @Override
+                public void init(int op, String src, String dest, long max) {
+
+                }
+
+                @Override
+                public boolean count(long bytes) {
+                    this.count += bytes;
+                    long percentNow = this.count*100/max;
+                    if(percentNow>this.percent){
+                        this.percent = percentNow;
+                        System.out.println("progress : " + this.percent);
+                    }
+                    return true;
+                }
+
+                @Override
+                public void end() {
+
+                }
+            });
             System.out.println("File uploaded successfully to " + remoteFilePath);
 
         } catch (Exception e) {
