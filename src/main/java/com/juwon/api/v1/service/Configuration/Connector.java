@@ -18,5 +18,18 @@ public class Connector {
                 .post(googleChat.getUrl(), requestBody)
                 .connectSubscribe();
     }
+    HttpClient httpClient = HttpClient.create()
+            .responseTimeout(Duration.ofSeconds(5)); // ⏱️ 5초 Timeout 설정
+
+    WebClient webClient = WebClient.builder()
+            .clientConnector(new reactor.netty.http.client.HttpClientConnector(httpClient))
+            .baseUrl("https://api.example.com")
+            .build();
+
+    String response = webClient.get()
+            .uri("/data")
+            .retrieve()
+            .bodyToMono(String.class)
+            .timeout(Duration.ofSeconds(3)) // 🚨 개별 요청에 대한 Timeout (3초)
+            .block();
 }
-출처: https://annajin.tistory.com/228 [내일 한걸음 더:티스토리]
