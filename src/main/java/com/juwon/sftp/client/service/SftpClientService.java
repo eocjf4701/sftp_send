@@ -27,9 +27,9 @@ public class SftpClientService {
             // stream으로 읽어서 업로드합니다.
             InputStream ins = new FileInputStream(remoteFilePath);
             channelSftp.put(ins, localFilePath, new SftpProgressMonitor() {
-                private long max = 0;  //최대
-                private long count = 0;  //계산을 위해 담아두는 변수
-                private long percent = 0;  //퍼센트
+                private long max = 0;
+                private long count = 0;
+                private long percent = 0;
 
                 @Override
                 public void init(int op, String src, String dest, long max) {

@@ -32,4 +32,6 @@ public class Connector {
             .bodyToMono(String.class)
             .timeout(Duration.ofSeconds(3)) // 🚨 개별 요청에 대한 Timeout (3초)
             .block();
+
+
 }
